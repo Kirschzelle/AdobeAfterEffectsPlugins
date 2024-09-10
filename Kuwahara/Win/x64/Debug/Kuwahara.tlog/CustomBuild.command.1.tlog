@@ -1,0 +1,4 @@
+^A:\PSEUDOMORPH OF LOVE\AEPLUGINS\MAY2023_AFTEREFFECTSSDK_WIN\AFTEREFFECTSSDK\EXAMPLES\KUWAHARA\KUWAHARA\KUWAHARAPIPL.R
+cl /I "A:\Pseudomorph of love\AEPlugins\May2023_AfterEffectsSDK_Win\AfterEffectsSDK\Examples\Kuwahara\Kuwahara\Win\..\..\..\Headers" /EP ".."\\"KuwaharaPiPL.r" > "x64\Debug\"\\"KuwaharaPiPL.rr"
+"A:\Pseudomorph of love\AEPlugins\May2023_AfterEffectsSDK_Win\AfterEffectsSDK\Examples\Kuwahara\Kuwahara\Win\..\..\..\Resources\PiPLTool" "x64\Debug\KuwaharaPiPL.rr" "x64\Debug\KuwaharaPiPL.rrc"
+cl /D "MSWindows" /EP x64\Debug\KuwaharaPiPL.rrc >               "A:\Pseudomorph of love\AEPlugins\May2023_AfterEffectsSDK_Win\AfterEffectsSDK\Examples\Kuwahara\Kuwahara\Win\"\\"KuwaharaPiPL".rc
