@@ -14,5 +14,5 @@ Comparisons:
 
 ---• Anisotropic Kuwahara Filter:
 ![Anisotropic Kuwahara](https://github.com/user-attachments/assets/e9a7b5bb-4ee2-44e8-a055-4d0d8f207614)
-Mostly adapted from https://github.com/GarrettGunnell/Post-Processing/blob/main/Assets/Kuwahara%20Filter/AnisotropicKuwahara.shader.
+Adapted from https://github.com/GarrettGunnell/Post-Processing/blob/main/Assets/Kuwahara%20Filter/AnisotropicKuwahara.shader.
 (32_bit_only, cpu_only, smart_render = yes, multy_frame_render = yes)
