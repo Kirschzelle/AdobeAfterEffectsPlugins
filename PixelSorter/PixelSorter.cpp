@@ -461,8 +461,6 @@ ActuallyRender(
 	{
 		ERR(wsP->PF_GetPixelFormat(input, &format));
 
-		ERR(wsP->PF_NewWorld(in_data->effect_ref, output->width, output->height, FALSE, format, &tempWorld1));
-
 		MainPass miP;
 		AEFX_CLR_STRUCT(miP);
 
@@ -497,13 +495,15 @@ ActuallyRender(
 			}
 
 			ERR(suites.IterateFloatSuite2()->iterate(in_data, 0, correctedInput.height, &correctedInput, NULL, NULL, CopyImage, output));
+
+			ERR(wsP->PF_DisposeWorld(in_data->effect_ref, &maskWorld));
 			break;
 		default:
 			break;
 		}
-	}
 
-	ERR(wsP->PF_DisposeWorld(in_data->effect_ref, &tempWorld1));
+		ERR(wsP->PF_DisposeWorld(in_data->effect_ref, &correctedInput));
+	}
 
 	return err;
 }

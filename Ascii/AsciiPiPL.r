@@ -13,11 +13,11 @@ resource 'PiPL' (16000) {
 		},
 		/* [2] */
 		Name {
-			"Skeleton"
+			"Ascii"
 		},
 		/* [3] */
 		Category {
-			"Sample Plug-ins"
+			"Kirschzelle"
 		},
 #ifdef AE_OS_WIN
 	#ifdef AE_PROC_INTELx64
@@ -49,15 +49,14 @@ resource 'PiPL' (16000) {
 		},
 		/* [10] */
 		AE_Effect_Global_OutFlags {
-		0x02000000 //50332160
-
+		0x02000000
 		},
 		AE_Effect_Global_OutFlags_2 {
-		0x00000000
+		134222848
 		},
 		/* [11] */
 		AE_Effect_Match_Name {
-			"ADBE Skeleton"
+			"Kirschzelle Ascii"
 		},
 		/* [12] */
 		AE_Reserved_Info {
@@ -65,8 +64,7 @@ resource 'PiPL' (16000) {
 		},
 		/* [13] */
 		AE_Effect_Support_URL {
-			"https://www.adobe.com"
+			"https://github.com/Kirschzelle/AdobeAfterEffectsPlugins"
 		}
 	}
 };
-

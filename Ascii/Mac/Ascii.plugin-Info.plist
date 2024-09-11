@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleExecutable</key>
-	<string>Skeleton</string>
+	<string>Kuwahara</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Skeleton</string>
+	<string>Kuwahara</string>
 	<key>CFBundlePackageType</key>
 	<string>eFKT</string>
 	<key>CFBundleSignature</key>
