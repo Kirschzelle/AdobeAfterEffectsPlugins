@@ -16,3 +16,8 @@ Comparisons:
 ![Anisotropic Kuwahara](https://github.com/user-attachments/assets/e9a7b5bb-4ee2-44e8-a055-4d0d8f207614)
 Adapted from https://github.com/GarrettGunnell/Post-Processing/blob/main/Assets/Kuwahara%20Filter/AnisotropicKuwahara.shader.
 (32_bit_only, cpu_only, smart_render = yes, multy_frame_render = yes)
+
+---• Pixel Sorting:
+![PixelSorter](https://github.com/user-attachments/assets/c0e448bb-6153-421e-8ce5-f4ee4b2c8be3)
+(32_bit_only, cpu_only, smart_render = yes, multy_frame_render = yes)
+NOTE: INEFFICIENT SORTING ALGORITHM - BE CAREFULL WHEN SORTING VERY LARGE AREAS - (EX: LOW_THRESHOLD = 0.0f & HIGH_THRESHOLD = 1.0f)
