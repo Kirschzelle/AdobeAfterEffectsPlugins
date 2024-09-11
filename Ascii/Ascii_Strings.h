@@ -19,26 +19,19 @@
 /*                                                                 */
 /*******************************************************************/
 
-#include "Skeleton.h"
+#pragma once
 
-typedef struct {
-	A_u_long	index;
-	A_char		str[256];
-} TableString;
-
-
-
-TableString		g_strs[StrID_NUMTYPES] = {
-	StrID_NONE,						"",
-	StrID_Name,						"Skeleton",
-	StrID_Description,				"An empty (skeletal, if you will) effect sample,\r for your modifying pleasure.\rCopyright 2007-2023 Adobe Inc.",
-	StrID_Gain_Param_Name,			"Gain",
-	StrID_Color_Param_Name,			"Color",
-};
-
-
-char	*GetStringPtr(int strNum)
-{
-	return g_strs[strNum].str;
-}
-	
+typedef enum {
+	StrID_NONE, 
+	StrID_Name,
+	StrID_Description,
+	StrID_COLOR_Param_Name,
+	StrID_EDGE_Param_Name,
+	StrID_TRANSPARENT_Param_Name,
+	StrID_KERNEL_SIZE_Param_Name,
+	StrID_SIGMA_Param_Name,
+	StrID_SIGMA_SCALE_Param_Name,
+	StrID_TAU_Param_Name,
+	StrID_TRESHOLD_Param_Name,
+	StrID_NUMTYPES
+} StrIDType;

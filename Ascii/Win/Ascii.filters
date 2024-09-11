@@ -16,15 +16,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="SkeletonPiPL.rc">
+    <ResourceCompile Include="AsciiPiPL.rc">
       <Filter>Resources</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Skeleton.h">
+    <ClInclude Include="..\Ascii.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Skeleton_Strings.h">
+    <ClInclude Include="..\Ascii_Strings.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Headers\A.h">
@@ -92,11 +92,11 @@
     <ClCompile Include="..\..\..\Util\MissingSuiteError.cpp">
       <Filter>Supporting code</Filter>
     </ClCompile>
-    <ClCompile Include="..\Skeleton.cpp" />
-    <ClCompile Include="..\Skeleton_Strings.cpp" />
+    <ClCompile Include="..\Ascii.cpp" />
+    <ClCompile Include="..\Ascii_Strings.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\SkeletonPiPL.r">
+    <CustomBuild Include="..\AsciiPiPL.r">
       <Filter>Resources</Filter>
     </CustomBuild>
   </ItemGroup>
