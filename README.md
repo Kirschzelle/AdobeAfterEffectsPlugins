@@ -20,4 +20,8 @@ Adapted from https://github.com/GarrettGunnell/Post-Processing/blob/main/Assets/
 ---• Pixel Sorting:
 ![PixelSorter](https://github.com/user-attachments/assets/c0e448bb-6153-421e-8ce5-f4ee4b2c8be3)
 (32_bit_only, cpu_only, smart_render = yes, multy_frame_render = yes)
-NOTE: INEFFICIENT SORTING ALGORITHM - BE CAREFULL WHEN SORTING VERY LARGE AREAS - (EX: LOW_THRESHOLD = 0.0f & HIGH_THRESHOLD = 1.0f)
+NOTE: INEFFICIENT SORTING ALGORITHM - BE CAREFULL WHEN SORTING VERY LARGE AREAS
+
+---• Ascii Filter:
+![ascii](https://github.com/user-attachments/assets/0475b940-6cf9-481c-a33f-823ba59ff868)
+(32_bit_only, cpu_only, smart_render = yes, multy_frame_render = yes)
