@@ -457,6 +457,9 @@ ActuallyRender(
 	PF_WorldSuite2 *wsP = NULL;
 	ERR(AEFX_AcquireSuite(in_data, out_data, kPFWorldSuite, kPFWorldSuiteVersion2, "Couldn't load suite.", (void **)&wsP));
 
+	PF_EffectWorld correctedInput;
+	PF_EffectWorld maskWorld;
+
 	if (!err)
 	{
 		ERR(wsP->PF_GetPixelFormat(input, &format));
@@ -464,7 +467,8 @@ ActuallyRender(
 		MainPass miP;
 		AEFX_CLR_STRUCT(miP);
 
-		PF_EffectWorld correctedInput;
+		ERR(wsP->PF_NewWorld(in_data->effect_ref, output->width, output->height, FALSE, format, &correctedInput));
+		ERR(wsP->PF_NewWorld(in_data->effect_ref, output->width, output->height, FALSE, format, &maskWorld));
 
 		miP.source = &correctedInput;
 		miP.sort_type = params[SORT_TYPE_DISK_ID]->u.sd.value;
@@ -475,8 +479,6 @@ ActuallyRender(
 			MaskGeneration mgP;
 			mgP.lower_threshold = params[MASK_MIN_THRESHOLD_DISK_ID]->u.fs_d.value;
 			mgP.higher_threshold = params[MASK_MAX_THRESHOLD_DISK_ID]->u.fs_d.value;
-			PF_EffectWorld maskWorld;
-			ERR(wsP->PF_NewWorld(in_data->effect_ref, output->width, output->height, FALSE, format, &maskWorld));
 			if (miP.sort_type == 0) {
 				ERR(suites.IterateFloatSuite2()->iterate(in_data, 0, input->height, input, NULL, (void*)&mgP, CreateMask, output));
 				break;
@@ -484,7 +486,6 @@ ActuallyRender(
 			ERR(suites.IterateFloatSuite2()->iterate(in_data, 0, input->height, input, NULL, (void*)&mgP, CreateMask, &maskWorld));
 			miP.mask = &maskWorld;
 
-			ERR(wsP->PF_NewWorld(in_data->effect_ref, output->width, output->height, FALSE, format, &correctedInput));
 			ERR(suites.IterateFloatSuite2()->iterate(in_data, 0, input->height, input, NULL, NULL, CopyImage, &correctedInput));
 
 			if (params[HORIZONTAL_DISK_ID]->u.bd.value) {
@@ -496,14 +497,15 @@ ActuallyRender(
 
 			ERR(suites.IterateFloatSuite2()->iterate(in_data, 0, correctedInput.height, &correctedInput, NULL, NULL, CopyImage, output));
 
-			ERR(wsP->PF_DisposeWorld(in_data->effect_ref, &maskWorld));
 			break;
 		default:
 			break;
 		}
 
+		ERR(wsP->PF_DisposeWorld(in_data->effect_ref, &maskWorld));
 		ERR(wsP->PF_DisposeWorld(in_data->effect_ref, &correctedInput));
 	}
+
 
 	return err;
 }
