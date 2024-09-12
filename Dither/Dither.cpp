@@ -109,11 +109,15 @@ ParamsSetup(
 
 	AEFX_CLR_STRUCT(def);
 
-	PF_ADD_CHECKBOX(STR(StrID_COLORS_ADAPT_Param_Name), STR(StrID_NONE), false, 0, COLORS_ADAPT_DISK_ID);
+	PF_ADD_FLOAT_SLIDERX(STR(StrID_SPREAD_Param_Name), 0.1f, 2.0f, 0.1f, 2.0f, 1.0f, PF_Precision_TEN_THOUSANDTHS, 0, 0, SPREAD_DISK_ID);
 
 	AEFX_CLR_STRUCT(def);
 
 	PF_ADD_SLIDER(STR(StrID_N_Param_Name), 1, 3, 1, 3, 2, N_DISK_ID);
+
+	AEFX_CLR_STRUCT(def);
+
+	PF_ADD_CHECKBOX(STR(StrID_COLORS_ADAPT_Param_Name), STR(StrID_NONE), false, 0, COLORS_ADAPT_DISK_ID);
 
 	out_data->num_params = DITHER_NUM_PARAMS;
 
@@ -201,9 +205,9 @@ Dither(
 
 	MainPass *miP = reinterpret_cast<MainPass *>(refcon);
 
-	outP->red = getNearestFloat(miP->colors_red, inP->red + ((1.0f / float(miP->n)) * (getCorrectMValue(miP->n, xL, yL) - 0.5f)));
-	outP->green = getNearestFloat(miP->colors_green, inP->green + ((1.0f / float(miP->n)) * (getCorrectMValue(miP->n, xL, yL) - 0.5f)));
-	outP->blue = getNearestFloat(miP->colors_blue, inP->blue + ((1.0f / float(miP->n)) * (getCorrectMValue(miP->n, xL, yL) - 0.5f)));
+	outP->red = getNearestFloat(miP->colors_red, inP->red + ((miP->spread / float(miP->n)) * (getCorrectMValue(miP->n, xL, yL) - 0.5f)));
+	outP->green = getNearestFloat(miP->colors_green, inP->green + ((miP->spread / float(miP->n)) * (getCorrectMValue(miP->n, xL, yL) - 0.5f)));
+	outP->blue = getNearestFloat(miP->colors_blue, inP->blue + ((miP->spread / float(miP->n)) * (getCorrectMValue(miP->n, xL, yL) - 0.5f)));
 	outP->alpha = inP->alpha;
 
 	return err;
@@ -215,10 +219,10 @@ static void fillColorArray(
 ) {
 	for (int c = 0; c < 16; c++) {
 		if (c < max_colors) {
-			colors[c - 1] = (float(c) / (max_colors - 1));
+			colors[c] = (float(c) / (max_colors - 1));
 		}
 		else {
-			colors[c - 1] = -1.0f;
+			colors[c] = -1.0f;
 		}
 	}
 }
@@ -277,7 +281,9 @@ ActuallyRender(
 
 		MainPass miP;
 		AEFX_CLR_STRUCT(miP);
+
 		miP.n = params[N_DISK_ID]->u.sd.value;
+		miP.spread = params[SPREAD_DISK_ID]->u.fs_d.value;
 
 		switch (format)
 		{
@@ -348,8 +354,9 @@ SmartRender(
 	ERR(PF_CHECKOUT_PARAM(in_data, COLORS_RED_DISK_ID, in_data->current_time, in_data->time_step, in_data->time_scale, &params[DITHER_COLORS_RED]));
 	ERR(PF_CHECKOUT_PARAM(in_data, COLORS_GREEN_DISK_ID, in_data->current_time, in_data->time_step, in_data->time_scale, &params[DITHER_COLORS_GREEN]));
 	ERR(PF_CHECKOUT_PARAM(in_data, COLORS_BLUE_DISK_ID, in_data->current_time, in_data->time_step, in_data->time_scale, &params[DITHER_COLORS_BLUE]));
-	ERR(PF_CHECKOUT_PARAM(in_data, COLORS_ADAPT_DISK_ID, in_data->current_time, in_data->time_step, in_data->time_scale, &params[DITHER_COLORS_ADAPT]));
+	ERR(PF_CHECKOUT_PARAM(in_data, SPREAD_DISK_ID, in_data->current_time, in_data->time_step, in_data->time_scale, &params[DITHER_SPREAD]));
 	ERR(PF_CHECKOUT_PARAM(in_data, N_DISK_ID, in_data->current_time, in_data->time_step, in_data->time_scale, &params[DITHER_N]));
+	ERR(PF_CHECKOUT_PARAM(in_data, COLORS_ADAPT_DISK_ID, in_data->current_time, in_data->time_step, in_data->time_scale, &params[DITHER_COLORS_ADAPT]));
 
 	ERR(ActuallyRender(in_data,
 					   input_worldP,
@@ -359,8 +366,9 @@ SmartRender(
 
 	// Always check in, no matter what the error condition!
 
-	ERR2(PF_CHECKIN_PARAM(in_data, &params[DITHER_N]));
 	ERR2(PF_CHECKIN_PARAM(in_data, &params[DITHER_COLORS_ADAPT]));
+	ERR2(PF_CHECKIN_PARAM(in_data, &params[DITHER_N]));
+	ERR2(PF_CHECKIN_PARAM(in_data, &params[DITHER_SPREAD]));
 	ERR2(PF_CHECKIN_PARAM(in_data, &params[DITHER_COLORS_BLUE]));
 	ERR2(PF_CHECKIN_PARAM(in_data, &params[DITHER_COLORS_GREEN]));
 	ERR2(PF_CHECKIN_PARAM(in_data, &params[DITHER_COLORS_RED]));

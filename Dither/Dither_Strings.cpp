@@ -34,8 +34,9 @@ TableString g_strs[StrID_NUMTYPES] = {
 	StrID_COLORS_RED_Param_Name, "Red Channel Color Amount",
 	StrID_COLORS_GREEN_Param_Name, "Green Channel Color Amount",
 	StrID_COLORS_BLUE_Param_Name, "Blue Channel Color Amount",
-	StrID_COLORS_ADAPT_Param_Name, "Adapt Colors to Image?",
-	StrID_N_Param_Name, "n"};
+	StrID_SPREAD_Param_Name, "Spread",
+	StrID_N_Param_Name, "n",
+	StrID_COLORS_ADAPT_Param_Name, "Adapt Colors to Image?"};
 
 char *GetStringPtr(int strNum)
 {

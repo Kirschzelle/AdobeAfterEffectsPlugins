@@ -29,7 +29,8 @@ typedef enum
 	StrID_COLORS_RED_Param_Name,
 	StrID_COLORS_GREEN_Param_Name,
 	StrID_COLORS_BLUE_Param_Name,
-	StrID_COLORS_ADAPT_Param_Name,
+	StrID_SPREAD_Param_Name,
 	StrID_N_Param_Name,
+	StrID_COLORS_ADAPT_Param_Name,
 	StrID_NUMTYPES
 } StrIDType;

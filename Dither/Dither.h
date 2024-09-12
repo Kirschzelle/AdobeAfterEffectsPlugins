@@ -80,8 +80,9 @@ enum
 	DITHER_COLORS_RED,
 	DITHER_COLORS_GREEN,
 	DITHER_COLORS_BLUE,
-	DITHER_COLORS_ADAPT,
+	DITHER_SPREAD,
 	DITHER_N,
+	DITHER_COLORS_ADAPT,
 	DITHER_NUM_PARAMS
 };
 
@@ -90,8 +91,9 @@ enum
 	COLORS_RED_DISK_ID = 1,
 	COLORS_GREEN_DISK_ID,
 	COLORS_BLUE_DISK_ID,
-	COLORS_ADAPT_DISK_ID,
+	SPREAD_DISK_ID,
 	N_DISK_ID,
+	COLORS_ADAPT_DISK_ID,
 	TRESHOLD_DISK_ID
 };
 
@@ -101,6 +103,7 @@ typedef struct MainPass
 	float colors_green[16];
 	float colors_blue[16];
 	int n;
+	float spread;
 };
 
 extern "C"
