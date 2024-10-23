@@ -38,6 +38,7 @@ Partly adapted from https://github.com/GarrettGunnell/Post-Processing/tree/main/
 ---• Dither:
 
 ![dither](https://github.com/user-attachments/assets/3d8e4d0a-1429-4b31-8e17-e1c5bd1cda82)
+![dither_closeup](https://github.com/user-attachments/assets/c6ee933c-c73c-46e8-b270-1958b0f3d59c)
 
 NOTE: LONG RENDERING TIME WHEN CHOOSING TO ADAPT COLORS SINCE I JUST SORT A LIST WHICH IS STUPID PERFORMANCE WISE
 (32_bit_only, cpu_only, smart_render = yes, multy_frame_render = yes)
